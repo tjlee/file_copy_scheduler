@@ -1,0 +1,19 @@
+[
+  {
+    "source": "D:\\Downloads\\_shit\\catalog-goods-base_for_price_check.xml",
+    "destination": "D:\\Downloads\\_shit\\tmp_check",
+    "timeout": 10.0,
+    "type": "copy"
+  },
+  {
+    "source": "D::\\Downloads\\_shit\\catalog-goods_additional_prices.xml",
+    "destination": "D:\\Downloads\\_shit\\tmp_check",
+    "timeout": 10.0,
+    "type": "copy"
+  },
+  {
+    "source": "source1",
+    "timeout": 10.0,
+    "type": "delete"
+  }
+]
