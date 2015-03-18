@@ -19,7 +19,7 @@ if __name__ == "__main__":
             if task['type'] == 'copy':
                 process = subprocess.Popen(
                     [sys.executable,
-                     '%s' % './copy_worker.py',
+                     '%s' % './scheduler/copy_worker.py',
                      '-s %s' % task['source'],
                      '-d %s' % task['destination'],
                      '-t %d' % task['timeout']])
@@ -27,7 +27,7 @@ if __name__ == "__main__":
             elif task['type'] == 'delete':
                 process = subprocess.Popen(
                     [sys.executable,
-                     '%s' % './delete_worker.py',
+                     '%s' % './scheduler/delete_worker.py',
                      '-s %s' % task['source'],
                      '-t %d' % task['timeout']])
                 processes.append(process)
