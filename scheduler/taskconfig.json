@@ -6,14 +6,19 @@
     "type": "copy"
   },
   {
-    "source": "D::\\Downloads\\_shit\\catalog-goods_additional_prices.xml",
+    "source": "D:\\Downloads\\_shit\\catalog-goods_additional_prices.xml",
     "destination": "D:\\Downloads\\_shit\\tmp_check",
     "timeout": 10.0,
     "type": "copy"
   },
   {
-    "source": "source1",
-    "timeout": 10.0,
+    "source": "D:\\Downloads\\_shit\\tmp_check\\",
+    "timeout": 22.0,
+    "type": "delete"
+  },
+  {
+    "source": "D:\\Downloads\\_shit\\tmp_check\\catalog-goods_additional_prices.xml",
+    "timeout": 22.0,
     "type": "delete"
   }
 ]

@@ -1,7 +1,6 @@
 import sys
 import subprocess
 import json
-import logging
 
 
 def get_json_task_list():
@@ -25,10 +24,15 @@ if __name__ == "__main__":
                      '-d %s' % task['destination'],
                      '-t %d' % task['timeout']])
                 processes.append(process)
-                # elif task['delete']:
-                # pass
+            elif task['type'] == 'delete':
+                process = subprocess.Popen(
+                    [sys.executable,
+                     '%s' % './delete_worker.py',
+                     '-s %s' % task['source'],
+                     '-t %d' % task['timeout']])
+                processes.append(process)
 
         for proc in processes:
             proc.wait()
     except KeyboardInterrupt:
-        logging.info("Quitting the program")
+        print("Quitting the program")

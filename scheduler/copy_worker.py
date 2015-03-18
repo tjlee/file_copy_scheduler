@@ -2,9 +2,13 @@ __author__ = 'v.chernov'
 import time
 import shutil
 import os
-import logging
 import sys
 from optparse import OptionParser
+
+import init_logger
+
+
+logger = init_logger.init_logger('copy_worker')
 
 
 def copytree(src, dst, symlinks=False, ignore=None):
@@ -22,15 +26,15 @@ def copy_worker(source, destination, timeout):
         while True:
             if os.path.isfile(source):
                 shutil.copy(source, destination)
+                logger.info("File copied from '%s' to '%s'" % (source, destination))
             elif os.path.isdir(source):
                 copytree(source, destination)
+                logger.info("Dir contents copied from '%s' to '%s'" % (source, destination))
             else:
-                logging.warning("Is not dir or file %s" % source)
-                raise
+                logger.warning("Is not dir or file '%s'" % source)
             time.sleep(timeout)
     except:
-        logging.error("Unexpected error: %s" % sys.exc_info()[0])
-        raise Exception("Unexpected error")
+        logger.error("Unexpected error: %s" % sys.exc_info()[0])
 
 
 if __name__ == "__main__":
